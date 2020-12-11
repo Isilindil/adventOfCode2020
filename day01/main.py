@@ -18,10 +18,10 @@ if __name__ == "__main__" :
     maxVal = len(data)
     for i in range(maxVal) :
         a = int(data[i])
-        for j in range(i, maxVal) :
+        for j in range(i+1, maxVal) :
             b = int(data[j])
             part_one(a, b)
-            for k in range(j, maxVal) :
+            for k in range(j+1, maxVal) :
                 c = int(data[k])
                 part_two(a, b, c)
 
