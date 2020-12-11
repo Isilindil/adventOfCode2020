@@ -1,5 +1,7 @@
 #!/usr/bin/python
 
+# Need to make it functional
+
 if __name__ == "__main__" :
     with open("input") as a :
         data = a.read()
