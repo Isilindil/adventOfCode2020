@@ -32,9 +32,6 @@ if __name__ == "__main__" :
     out = 'loop'
     while out == 'loop' :
         modif_data = list(data)
-        if None in modif_data :
-            ins, value = instruction_list[current_index].split()
-            break
         for i in range(last_modif+1, len(modif_data)) :
             ins, value = modif_data[i].split()
             if ins == 'jmp' :
