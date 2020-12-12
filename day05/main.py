@@ -23,6 +23,7 @@ if __name__ == "__main__" :
     column = range(8)
 
     max_seat_ID = 0
+    all_seat_ID = []
 
     for coord in data :
         row_coord = coord[:7]
@@ -32,5 +33,12 @@ if __name__ == "__main__" :
         col_val = int(seat(col_coord, column)[0])
 
         max_seat_ID = max(max_seat_ID, row_val*8+col_val)
+        all_seat_ID.append(row_val*8+col_val)
 
     print(max_seat_ID)
+    all_seat_ID.sort()
+    print(all_seat_ID)
+
+    for s in range(len(all_seat_ID)) :
+        if all_seat_ID[s+1]-all_seat_ID[s] != 1 :
+            print(all_seat_ID[s-1]," ",all_seat_ID[s]," ",all_seat_ID[s+1])
