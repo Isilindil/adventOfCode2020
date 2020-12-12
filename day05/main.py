@@ -35,10 +35,10 @@ if __name__ == "__main__" :
         max_seat_ID = max(max_seat_ID, row_val*8+col_val)
         all_seat_ID.append(row_val*8+col_val)
 
-    print(max_seat_ID)
+    print("highest seat : {}".format(max_seat_ID))
     all_seat_ID.sort()
-    print(all_seat_ID)
+    #print(all_seat_ID)
 
     for s in range(len(all_seat_ID)-1) :
         if all_seat_ID[s+1]-all_seat_ID[s] != 1 :
-            print(all_seat_ID[s-1]," ",all_seat_ID[s]," ",all_seat_ID[s+1])
+            print("Your seat : {}".format(all_seat_ID[s+1]-1))
