@@ -21,9 +21,14 @@ def check_hgt(val) :
     # hgt (Height) - a number followed by either cm or in:
     # If cm, the number must be at least 150 and at most 193.
     # If in, the number must be at least 59 and at most 76.
-    cm_re = re.compile(r"\d+cm$")
-    in_re = re.compile(r"\d+in$")
-    if val : return 0
+    cm_re = re.compile(r"(?P<c>\d+)cm$")
+    in_re = re.compile(r"(?P<i>\d+)in$")
+    if cm_re.search(val) :
+        heigth = int(cm_re.search(val).group('c'))
+        if (150 <= heigth <= 193) : return 1
+    elif in_re.search(val) :
+        heigth = int(in_re.search(val).group('i'))
+        if(59 <= heigth <= 76) : return 1
     return 0
 def check_hcl(val) :
     # hcl (Hair Color) - a # followed by exactly six characters 0-9 or a-f.
@@ -76,7 +81,7 @@ if __name__ == "__main__" :
             for kv in sp :
                 k,v = kv.split(':')
                 try: allField[k] += func_dic[k](v)
-                except KeyError: pass
+                except KeyError : pass
 
     else : # last passport
         print(allField)
