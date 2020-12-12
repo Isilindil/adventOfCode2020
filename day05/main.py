@@ -39,6 +39,6 @@ if __name__ == "__main__" :
     all_seat_ID.sort()
     print(all_seat_ID)
 
-    for s in range(len(all_seat_ID)) :
+    for s in range(len(all_seat_ID)-1) :
         if all_seat_ID[s+1]-all_seat_ID[s] != 1 :
             print(all_seat_ID[s-1]," ",all_seat_ID[s]," ",all_seat_ID[s+1])
