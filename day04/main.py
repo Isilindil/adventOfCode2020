@@ -23,6 +23,7 @@ def check_hgt(val) :
     # If in, the number must be at least 59 and at most 76.
     cm_re = re.compile(r"\d+cm$")
     in_re = re.compile(r"\d+in$")
+    if val : return 0
     return 0
 def check_hcl(val) :
     # hcl (Hair Color) - a # followed by exactly six characters 0-9 or a-f.
@@ -65,13 +66,13 @@ if __name__ == "__main__" :
     validPassport = 0
 
     # Part two
-    for val in data :
-        if not val : # new passport
+    for line in data :
+        if not line : # new passport
             if 0 not in allField.values() : validPassport += 1
             for k in allField.keys() : allField[k] = 0
 
         else : # reading passport
-            sp = val.split()
+            sp = line.split()
             for kv in sp :
                 k,v = kv.split(':')
                 try: allField[k] += func_dic[k](v)
@@ -87,14 +88,14 @@ if __name__ == "__main__" :
     exit()
 
     # Part one
-    for val in data :
-        if not val : # new passport
+    for line in data :
+        if not line : # new passport
             print(allField)
             if 0 not in allField.values() : validPassport += 1
             for k in allField.keys() : allField[k] = 0
 
         else : # reading passport
-            sp = val.split()
+            sp = line.split()
             for kv in sp :
                 k,v = kv.split(':')
                 try : allField[k] += 1
