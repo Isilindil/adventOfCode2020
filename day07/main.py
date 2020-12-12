@@ -26,7 +26,7 @@ def can_I_contain_gold(bag, start_bag, chain_bags) :
 
 def how_many_bag_needed(outer, chain_bags) :
     total_bag = 0
-    if outer == "other" : return 1  # no bag inside
+    if chain_bags[outer][0][0] == "other" : return 0  # no bag inside
     for nextBag, quantities in chain_bags[outer] :
         total_bag += quantities + quantities*how_many_bag_needed(nextBag, chain_bags)
     else : return total_bag
