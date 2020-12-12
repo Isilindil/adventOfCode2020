@@ -1,4 +1,36 @@
 #!/usr/bin/python
 
+def seat(coord_code, coord_authorized) :
+    if len(coord_authorized) == 1 : return coord_authorized
+    code = coord_code[0]
+    code_tail = coord_code[1:]
+    if code == "F" :
+        return seat(code_tail, coord_authorized[:len(coord_authorized)//2])
+    elif code == "B" :
+        return seat(code_tail, coord_authorized[len(coord_authorized)//2:])
+    elif code == "L" :
+        return seat(code_tail, coord_authorized[:len(coord_authorized)//2])
+    elif code == "R" :
+        return seat(code_tail, coord_authorized[len(coord_authorized)//2:])
+
+
 if __name__ == "__main__" :
-    pass
+    with open("input") as a :
+        data = a.read().split("\n")
+    a.close()
+
+    row = range(128)
+    column = range(8)
+
+    max_seat_ID = 0
+
+    for coord in data :
+        row_coord = coord[:7]
+        col_coord = coord[7:]
+
+        row_val = int(seat(row_coord, row)[0])
+        col_val = int(seat(col_coord, column)[0])
+
+        max_seat_ID = max(max_seat_ID, row_val*8+col_val)
+
+    print(max_seat_ID)
