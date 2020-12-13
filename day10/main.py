@@ -65,6 +65,5 @@ if __name__ == "__main__" :
 
     total_chain = 1
     for i in all_sub_total :
-        #print(i)
         total_chain *= i
     print(total_chain)
