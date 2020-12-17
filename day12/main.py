@@ -39,18 +39,20 @@ class Boat :
         elif direction == "S" :
             self.waypoint[0] -= int(value)
         elif direction == "W":
-            self.waypoint[1] += int(value)
-        elif direction == "E":
             self.waypoint[1] -= int(value)
+        elif direction == "E":
+            self.waypoint[1] += int(value)
         else :
             rotation = value // 90
             if rotation % 2 == 0 :
                 self.waypoint[0], self.waypoint[1] = -self.waypoint[0], -self.waypoint[1]
             else :
                 if direction == "R" :
-                    self.waypoint[0], self.waypoint[1] = -self.waypoint[1], self.waypoint[0]
+                    for _ in range(rotation) :
+                        self.waypoint[0], self.waypoint[1] = -self.waypoint[1], self.waypoint[0]
                 elif direction == "L" :
-                    self.waypoint[0], self.waypoint[1] = self.waypoint[1], -self.waypoint[0]
+                    for _ in range(rotation):
+                        self.waypoint[0], self.waypoint[1] = self.waypoint[1], -self.waypoint[0]
 
     def manhattan_distance_from_origin(self):
         return abs(self.coord[0])+abs(self.coord[1])
